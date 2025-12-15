@@ -1,5 +1,3 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/popohoyo1029384756-hub/Project_PP_Classic_LoadingGui/refs/heads/main/PPPCLG.lua"))()
-
 local player = game.Players.LocalPlayer
 local scr = Instance.new("ScreenGui")
 scr.Name = "ProjectPP"
@@ -177,3 +175,5 @@ UIS.InputChanged:Connect(function(i)
 end)
 
 print("Project PP GUI loaded")
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/popohoyo1029384756-hub/Project_PP_Classic_LoadingGui/refs/heads/main/PPPCLG.lua"))()
