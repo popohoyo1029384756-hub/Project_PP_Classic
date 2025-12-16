@@ -143,7 +143,7 @@ clrBtn.MouseButton1Click:Connect(function()
     input.Text = ""
 end)
 
-input.Text = [[print("Welcome to Project PP")]]
+input.Text = [[print("made by pun_pun102030")]]
 
 -- Full Window Drag
 local UIS = game:GetService("UserInputService")
