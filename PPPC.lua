@@ -9,7 +9,7 @@ local main = Instance.new("Frame", scr)
 main.Size = UDim2.new(0, 600, 0, 350)
 main.Position = UDim2.new(0.5, -300, 0.5, -175)
 main.BackgroundColor3 = Color3.fromRGB(255,255,255)
-main.BorderSizePixel = 3
+main.BorderSizePixel = 1.5
 main.BorderColor3 = Color3.fromRGB(0,0,0)
 
 -- Title
