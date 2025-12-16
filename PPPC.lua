@@ -69,8 +69,8 @@ local function createButton(x,text)
     return btn
 end
 
-local execBtn = createButton(5,"Execute")
-local clrBtn  = createButton(210,"Clear")
+local execBtn = createButton(5,"EXEC")
+local clrBtn  = createButton(210,"CLR")
 
 -- Script Tab Title
 local scriptTitle = Instance.new("TextLabel", main)
