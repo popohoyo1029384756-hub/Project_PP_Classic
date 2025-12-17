@@ -180,4 +180,6 @@ UIS.InputChanged:Connect(function(i)
     if dragging and i == dragInput then update(i) end
 end)
 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/popohoyo1029384756-hub/Project_PP_Classic_LoadingGui/refs/heads/main/PPPCLG.lua"))()
+
 print("Project PP GUI loaded")
