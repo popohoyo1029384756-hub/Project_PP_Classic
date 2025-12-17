@@ -9,7 +9,7 @@ local main = Instance.new("Frame", scr)
 main.Size = UDim2.new(0, 600, 0, 350)
 main.Position = UDim2.new(0.5, -300, 0.5, -175)
 main.BackgroundColor3 = Color3.fromRGB(255,255,255)
-main.BorderSizePixel = 1.8
+main.BorderSizePixel = 1.85
 main.BorderColor3 = Color3.fromRGB(0,0,0)
 
 -- Title
@@ -27,7 +27,7 @@ local inputFrame = Instance.new("Frame", main)
 inputFrame.Size = UDim2.new(0, 420, 0, 220)
 inputFrame.Position = UDim2.new(0, 10, 0, 50)
 inputFrame.BackgroundColor3 = Color3.fromRGB(255,255,255)
-inputFrame.BorderSizePixel = 1.8
+inputFrame.BorderSizePixel = 1.85
 inputFrame.BorderColor3 = Color3.fromRGB(0,0,0)
 
 local input = Instance.new("TextBox", inputFrame)
@@ -55,7 +55,7 @@ local function createButton(x,text)
     frame.Size = UDim2.new(0, 190, 0, 60)
     frame.Position = UDim2.new(0, x, 0, 5)
     frame.BackgroundColor3 = Color3.fromRGB(255,255,255)
-    frame.BorderSizePixel = 1.8
+    frame.BorderSizePixel = 1.85
     frame.BorderColor3 = Color3.fromRGB(0,0,0)
 
     local btn = Instance.new("TextButton", frame)
@@ -79,7 +79,7 @@ scriptTitle.Position = UDim2.new(0, 440, 0, 10)
 scriptTitle.Text = "SCRIPT List"
 scriptTitle.TextSize = 20
 scriptTitle.BackgroundColor3 = Color3.fromRGB(255,255,255)
-scriptTitle.BorderSizePixel = 1.8
+scriptTitle.BorderSizePixel = 1.85
 scriptTitle.BorderColor3 = Color3.fromRGB(0,0,0)
 scriptTitle.TextColor3 = Color3.fromRGB(0,0,0)
 
@@ -90,7 +90,7 @@ scriptFrame.Position = UDim2.new(0, 440, 0, 50)
 scriptFrame.CanvasSize = UDim2.new(0, 0, 0, 1000)
 scriptFrame.ScrollBarThickness = 6
 scriptFrame.BackgroundColor3 = Color3.fromRGB(255,255,255)
-scriptFrame.BorderSizePixel = 1.8
+scriptFrame.BorderSizePixel = 1.85
 scriptFrame.BorderColor3 = Color3.fromRGB(0,0,0)
 
 -- Script List
@@ -103,7 +103,7 @@ local scripts = {
     {Title="luau x ss v3",URL="https://raw.githubusercontent.com/gojohdkaisenkt2/Gojohdkaisenkt-/refs/heads/main/L"},
     {Title="luau x ss v5",URL="https://rawscripts.net/raw/Universal-Script-Luau-X-SS-V5-rework-50365"},
     {Title="c00lgui",URL="https://raw.githubusercontent.com/MiRw3b/c00lgui-v3rx/main/c00lguiv3rx.lua"},
-    {Title="exser",URL="https://pastefy.app/7sO8ckTL/raw"},
+    {Title="ExSer",URL="https://pastefy.app/7sO8ckTL/raw"},
     {Title="stigma ultimate",URL="https://raw.githubusercontent.com/C-Dr1ve/Executor-Remakes-In-Lua/refs/heads/main/Remakes/Stigma_Revision_0.lua"},
     {Title="venguim",URL="https://pastefy.app/j3yyullx/raw"},
     {Title="Ro Xploit tiny",URL="https://raw.githubusercontent.com/Kroostal/Ro-Xploittinyhub/refs/heads/main/RoXploit%20TinyHub"},
@@ -123,7 +123,7 @@ for _, s in ipairs(scripts) do
     b.TextSize = 15
     b.Font = Enum.Font.SourceSansBold
     b.BackgroundColor3 = Color3.fromRGB(255,255,255)
-    b.BorderSizePixel = 1.8
+    b.BorderSizePixel = 1.85
     b.BorderColor3 = Color3.fromRGB(0,0,0)
     b.TextColor3 = Color3.fromRGB(0,0,0)
 
