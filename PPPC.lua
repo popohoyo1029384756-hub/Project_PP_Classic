@@ -76,7 +76,7 @@ local clrBtn  = createButton(210,"CLR")
 local scriptTitle = Instance.new("TextLabel", main)
 scriptTitle.Size = UDim2.new(0, 150, 0, 35)
 scriptTitle.Position = UDim2.new(0, 440, 0, 10)
-scriptTitle.Text = "Script Tab"
+scriptTitle.Text = "SCRIPT List"
 scriptTitle.TextSize = 20
 scriptTitle.BackgroundColor3 = Color3.fromRGB(255,255,255)
 scriptTitle.BorderSizePixel = 1.8
@@ -128,22 +128,27 @@ for _, s in ipairs(scripts) do
     b.TextColor3 = Color3.fromRGB(0,0,0)
 
     b.MouseButton1Click:Connect(function()
-        loadstring(game:HttpGet(s.URL))()
+        input.Text = [[loadstring(game:HttpGet("]] .. s.URL .. [[",true))()]]  -- loadstring + URL ตรงๆ
+        input:CaptureFocus()  -- focus ไป input อัตโนมัติ
     end)
 
     y += 45
 end
 
+scriptFrame.CanvasSize = UDim2.new(0, 0, 0, y)
+
 -- Execute / Clear
 execBtn.MouseButton1Click:Connect(function()
-    loadstring(input.Text)()
+    if input.Text ~= "" and input.Text ~= input.PlaceholderText then
+        loadstring(input.Text)()
+    end
 end)
 
 clrBtn.MouseButton1Click:Connect(function()
     input.Text = ""
 end)
 
-input.Text = [[print("made by pun_pun102030")]]
+input.Text = [[print("made by pun_punPP102030")]]
 
 -- Full Window Drag
 local UIS = game:GetService("UserInputService")
