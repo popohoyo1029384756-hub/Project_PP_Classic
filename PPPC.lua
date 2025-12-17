@@ -99,7 +99,6 @@ local scripts = {
     {Title="ssp",URL="https://pastefy.app/XHqVeb0d/raw"},
     {Title="BiPolaria",URL="https://pastebin.com/raw/8qFWEtWY"},
     {Title="Polaria",URL="https://pastefy.app/agqEB2qs/raw"},
-    {Title="Rc7",URL="https://pastebin.com/raw/E11VV0G8"},
     {Title="KlausGui ss",URL="https://pastebin.com/raw/Y0CYLJ6z"},
     {Title="luau x ss v3",URL="https://raw.githubusercontent.com/gojohdkaisenkt2/Gojohdkaisenkt-/refs/heads/main/L"},
     {Title="luau x ss v5",URL="https://rawscripts.net/raw/Universal-Script-Luau-X-SS-V5-rework-50365"},
